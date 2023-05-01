@@ -24,20 +24,17 @@ const ManageTrips = () => {
       }
       return time.join("");
     }
-    fetch(
-      "https://bus-counter-backend-production.up.railway.app/trips/add/date",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // trip_name: e.target.trip.value,
-          trip_time: tConvert(e.target.time.value),
-          trip_date: e.target.date.value,
-        }),
-      }
-    )
+    fetch("https://nabinbaron-backend.onrender.com/trips/add/date", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // trip_name: e.target.trip.value,
+        trip_time: tConvert(e.target.time.value),
+        trip_date: e.target.date.value,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
         setDateModalShow(false);
@@ -74,7 +71,7 @@ const ManageTrips = () => {
 
   const handleAddTrips = (e) => {
     e.preventDefault();
-    fetch("https://bus-counter-backend-production.up.railway.app/trips/add", {
+    fetch("https://nabinbaron-backend.onrender.com/trips/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,7 +104,7 @@ const ManageTrips = () => {
     }).then((result) => {
       if (result.value) {
         fetch(
-          `https://bus-counter-backend-production.up.railway.app/trips/delete/date/${id}`,
+          `https://nabinbaron-backend.onrender.com/trips/delete/date/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -139,15 +136,12 @@ const ManageTrips = () => {
       cancelButtonText: "No, keep it",
     }).then((result) => {
       if (result.value) {
-        fetch(
-          `https://bus-counter-backend-production.up.railway.app/trips/delete/${id}`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        fetch(`https://nabinbaron-backend.onrender.com/trips/delete/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             const newTrips = trips.filter((item) => item._id !== id);
@@ -163,15 +157,13 @@ const ManageTrips = () => {
   };
 
   React.useEffect(() => {
-    fetch("https://bus-counter-backend-production.up.railway.app/trips/all")
+    fetch("https://nabinbaron-backend.onrender.com/trips/all")
       .then((res) => res.json())
       .then((data) => {
         setTrips(data);
       })
       .catch((err) => console.log(err));
-    fetch(
-      "https://bus-counter-backend-production.up.railway.app/trips/all/date"
-    )
+    fetch("https://nabinbaron-backend.onrender.com/trips/all/date")
       .then((res) => res.json())
       .then((data) => {
         setDateTrip(data);

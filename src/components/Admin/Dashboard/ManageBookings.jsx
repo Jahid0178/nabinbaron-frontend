@@ -5,7 +5,7 @@ const ManageBookings = () => {
   const [bookings, setBookings] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("https://bus-counter-backend-production.up.railway.app/booking/all")
+    fetch("https://nabinbaron-backend.onrender.com/booking/all")
       .then((res) => res.json())
       .then((data) => {
         setBookings(data);
@@ -26,7 +26,7 @@ const ManageBookings = () => {
     }).then((result) => {
       if (result.value) {
         fetch(
-          `https://bus-counter-backend-production.up.railway.app/booking/delete/${data._id}`,
+          `https://nabinbaron-backend.onrender.com/booking/delete/${data._id}`,
           {
             method: "DELETE",
             headers: {

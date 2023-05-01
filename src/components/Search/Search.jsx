@@ -19,7 +19,7 @@ const Search = () => {
   const [booking, setBooking] = React.useState(null);
   const [selectedSits, setSelectedSits] = React.useState([]);
   React.useEffect(() => {
-    fetch("https://bus-counter-backend-production.up.railway.app/trips/all")
+    fetch("https://nabinbaron-backend.onrender.com/trips/all")
       .then((res) => res.json())
       .then((data) => {
         setTrips(data);
@@ -27,19 +27,16 @@ const Search = () => {
       .catch((err) => console.log(err));
 
     if (searchTrips.date) {
-      fetch(
-        "https://bus-counter-backend-production.up.railway.app/trips/get/date",
-        {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            trip_date: searchTrips.date,
-            trip_name: searchTrips.trip,
-          }),
-        }
-      )
+      fetch("https://nabinbaron-backend.onrender.com/trips/get/date", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          trip_date: searchTrips.date,
+          trip_name: searchTrips.trip,
+        }),
+      })
         .then((res) => res.json())
         .then((data) => {
           setSearch(data);
@@ -98,16 +95,13 @@ const Search = () => {
           parseFloat(booking.commission || 0)),
       trip_id: bookingId,
     };
-    fetch(
-      "https://bus-counter-backend-production.up.railway.app/booking/add/",
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookingData),
-      }
-    )
+    fetch("https://nabinbaron-backend.onrender.com/booking/add/", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    })
       .then((res) => res.json())
       .then((data) => {
         Swal.fire({

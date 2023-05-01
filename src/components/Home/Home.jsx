@@ -34,7 +34,7 @@ const Home = () => {
   };
   React.useEffect(() => {
     setLoading(true);
-    fetch("https://bus-counter-backend-production.up.railway.app/trips/all")
+    fetch("https://nabinbaron-backend.onrender.com/trips/all")
       .then((res) => res.json())
       .then((data) => {
         setTrips(data);

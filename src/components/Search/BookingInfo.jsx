@@ -5,7 +5,7 @@ const BookingInfo = ({ book, date }) => {
 
   React.useEffect(() => {
     book &&
-      fetch("https://bus-counter-backend-production.up.railway.app/booking/all")
+      fetch("https://nabinbaron-backend.onrender.com/booking/all")
         .then((res) => res.json())
         .then((data) => {
           const dataFilter = data.filter(

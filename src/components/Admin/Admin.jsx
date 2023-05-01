@@ -13,7 +13,7 @@ const Admin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("https://bus-counter-backend-production.up.railway.app/users/login", {
+    fetch("https://nabinbaron-backend.onrender.com/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
